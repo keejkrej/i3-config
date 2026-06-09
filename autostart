@@ -1,5 +1,8 @@
 # Startup programs for i3.
 
+# Wallpaper.
+exec --no-startup-id feh --bg-fill /usr/share/xfce4/backdrops/xubuntu-wallpaper.png
+
 # Notifications.
 exec --no-startup-id dunst
 

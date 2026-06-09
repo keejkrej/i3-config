@@ -1,0 +1,28 @@
+#!/bin/bash
+# Omarchy-style system menu (Lock / Logout / Power) via dmenu.
+
+choice=$(printf '%s\n' \
+  "Lock" \
+  "Logout" \
+  "Suspend" \
+  "Reboot" \
+  "Shutdown" \
+  | dmenu -i -p "System" -nb "#121212" -nf "#bebebe" -sb "#e68e0d" -sf "#121212")
+
+case "$choice" in
+  Lock)
+    "$HOME/.config/i3/scripts/lock"
+    ;;
+  Logout)
+    "$HOME/.config/i3/scripts/logout"
+    ;;
+  Suspend)
+    systemctl suspend
+    ;;
+  Reboot)
+    systemctl reboot
+    ;;
+  Shutdown)
+    systemctl poweroff
+    ;;
+esac

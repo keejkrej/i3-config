@@ -1,0 +1,21 @@
+#!/bin/bash
+# Lock with i3lock (works on X11/i3). Omarchy's hyprlock does not.
+
+# xfce4-screensaver fights i3lock and often leaves you stuck.
+pkill -x xfce4-screensaver 2>/dev/null
+pkill -x light-locker 2>/dev/null
+
+pidof i3lock >/dev/null && exit 0
+
+i3lock \
+  -c 121212 \
+  -e \
+  -f "Hack Nerd Font" \
+  --ignore-empty-password \
+  --indicator \
+  --ring-color=e68e0d \
+  --inside-color=121212 \
+  --line-color=333333 \
+  --ringver-color=e68e0d \
+  --insidever-color=515151 \
+  --separator-color=333333

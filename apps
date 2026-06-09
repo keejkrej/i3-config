@@ -1,0 +1,5 @@
+# Default applications — change these to taste.
+set $terminal ghostty
+set $browser google-chrome
+set $filemanager thunar
+set $editor nvim

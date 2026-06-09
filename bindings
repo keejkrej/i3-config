@@ -1,0 +1,73 @@
+# Application launchers (Omarchy-style keys, i3-native commands).
+bindsym $mod+Return               exec --no-startup-id $terminal
+bindsym $mod+Shift+Return         exec --no-startup-id $browser
+bindsym $mod+Shift+f              exec --no-startup-id $filemanager
+bindsym $mod+Shift+n              exec --no-startup-id $terminal -e $editor
+bindsym $mod+space                exec --no-startup-id dmenu_run
+bindsym $mod+Shift+space          exec --no-startup-id i3-msg bar mode toggle
+bindsym $mod+Escape               exec --no-startup-id $scripts/system-menu
+bindsym $mod+Alt+space            exec --no-startup-id dmenu_run
+bindsym $mod+Shift+l              exec --no-startup-id $scripts/lock
+
+# Window management.
+bindsym $mod+w                    kill
+bindsym $mod+t                    floating toggle
+bindsym $mod+f                    fullscreen toggle
+bindsym $mod+j                    split toggle
+bindsym $mod+Shift+q              exec --no-startup-id $scripts/logout
+
+# Focus.
+bindsym $mod+Left                 focus left
+bindsym $mod+Down                 focus down
+bindsym $mod+Up                   focus up
+bindsym $mod+Right                focus right
+bindsym $mod+Tab                  workspace next
+bindsym $mod+Shift+Tab            workspace prev
+
+# Move windows.
+bindsym $mod+Shift+Left           move left
+bindsym $mod+Shift+Down           move down
+bindsym $mod+Shift+Up             move up
+bindsym $mod+Shift+Right          move right
+
+# Workspaces 1–10.
+bindsym $mod+1                    workspace number 1
+bindsym $mod+2                    workspace number 2
+bindsym $mod+3                    workspace number 3
+bindsym $mod+4                    workspace number 4
+bindsym $mod+5                    workspace number 5
+bindsym $mod+6                    workspace number 6
+bindsym $mod+7                    workspace number 7
+bindsym $mod+8                    workspace number 8
+bindsym $mod+9                    workspace number 9
+bindsym $mod+0                    workspace number 10
+
+bindsym $mod+Shift+1              move container to workspace number 1
+bindsym $mod+Shift+2              move container to workspace number 2
+bindsym $mod+Shift+3              move container to workspace number 3
+bindsym $mod+Shift+4              move container to workspace number 4
+bindsym $mod+Shift+5              move container to workspace number 5
+bindsym $mod+Shift+6              move container to workspace number 6
+bindsym $mod+Shift+7              move container to workspace number 7
+bindsym $mod+Shift+8              move container to workspace number 8
+bindsym $mod+Shift+9              move container to workspace number 9
+bindsym $mod+Shift+0              move container to workspace number 10
+
+# Resize (maps Omarchy SUPER + -/=).
+bindsym $mod+minus                resize shrink width  100 px
+bindsym $mod+equal                resize grow   width  100 px
+bindsym $mod+Shift+minus          resize shrink height 100 px
+bindsym $mod+Shift+equal          resize grow   height 100 px
+
+# Mouse: drag to move, right-drag to resize.
+bindsym --whole-window $mod+button1  floating enable, move window
+bindsym $mod+button3                 floating enable, resize window
+
+# Lock and system.
+bindsym $mod+Control+l              exec --no-startup-id $scripts/lock
+bindsym Print                       exec --no-startup-id gnome-screenshot
+
+# Media / hardware keys.
+bindsym XF86AudioRaiseVolume        exec --no-startup-id amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume        exec --no-startup-id amixer -D pulse sset Master 5%-
+bindsym XF86AudioMute               exec --no-startup-id amixer -D pulse sset Master toggle

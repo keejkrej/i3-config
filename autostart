@@ -1,0 +1,10 @@
+# Startup programs for i3.
+
+# Notifications.
+exec --no-startup-id dunst
+
+# xfce4-screensaver breaks i3lock unlock — disable it in i3 sessions.
+exec --no-startup-id pkill -x xfce4-screensaver
+
+# Optional: uncomment if you use a compositor.
+# exec --no-startup-id picom -b

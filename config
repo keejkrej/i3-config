@@ -1,0 +1,71 @@
+# Omarchy-inspired i3 — matte black theme, i3bar taskbar, i3lock.
+# Repo: ~/workspace/i3-config (symlinked to ~/.config/i3)
+
+set $mod Mod4
+set $scripts ~/.config/i3/scripts
+
+include apps
+include bindings
+include autostart
+
+font pango:Hack Nerd Font 12
+
+focus_follows_mouse yes
+new_window 1pixel
+default_orientation horizontal
+workspace_layout default
+
+gaps inner 5
+gaps outer 10
+
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+
+# Matte black / amber accent (from Omarchy matte-black theme).
+client.focused          #e68e0d #2e2e2e #ffffff #e68e0d
+client.focused_inactive #595959 #2e2e2e #bebebe #595959
+client.unfocused        #595959 #1a1a1a #888888 #595959
+client.urgent           #d35f5f #2e2e2e #ffffff #d35f5f
+
+floating_modifier $mod
+floating_maximum_size -1 x -1
+
+mode "resize" {
+    bindsym Left  resize shrink width  10 px or 10 ppt
+    bindsym Down  resize grow   height 10 px or 10 ppt
+    bindsym Up    resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow   width  10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bindsym $mod+s scratchpad show
+bindsym $mod+Shift+s move scratchpad
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec $scripts/logout
+
+# Taskbar: i3bar with workspace buttons, window title, and status.
+bar {
+    font pango:Hack Nerd Font 12
+    status_command i3status -c ~/.config/i3/i3status.conf
+    position top
+    mode dock
+    hidden_state hide
+    workspace_buttons yes
+    workspace_min_width 20
+    colors {
+        background #121212
+        statusline #bebebe
+        separator #333333
+        focused_workspace #e68e0d #2e2e2e #ffffff #e68e0d
+        active_workspace #595959 #1a1a1a #bebebe #595959
+        inactive_workspace #595959 #1a1a1a #888888 #595959
+        urgent_workspace #d35f5f #2e2e2e #ffffff #d35f5f
+    }
+}
+
+include ~/.config/i3/user

@@ -1,0 +1,11 @@
+#!/bin/bash
+# End the graphical session and return to the display manager.
+
+pkill -x xfce4-screensaver 2>/dev/null
+pkill -x i3lock 2>/dev/null
+
+if loginctl show-user "$USER" -p Display --value 2>/dev/null | grep -q .; then
+  loginctl terminate-user "$USER"
+else
+  i3-msg exit
+fi
